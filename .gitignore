@@ -1,0 +1,15 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/survey-react/node_modules
+
+# production
+/survey-react/build
+
+survey-react/npm-debug.log*
+survey-react/yarn-debug.log*
+survey-react/yarn-error.log*
+
+/app/app/__pycache__
+/app/survey/__pycache__
+/app/survey/migrations/__pycache__
