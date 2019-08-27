@@ -1,5 +1,6 @@
 ## Sample react + django + postgres app
-tested on mac osx and Docker Desktop for Mac(2.1.0.1)
+tested on mac osx and Docker Desktop for Mac(2.1.0.1)  
+This app consists of 3 layers: a UI written in React, an API written with Django, and Postgres as the database  
 
 ## run the project
 run docker compose:  
