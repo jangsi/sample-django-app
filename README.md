@@ -1,3 +1,5 @@
+## tested on mac osx and Docker Desktop for Mac (2.1.0.1)
+
 ## run docker-compose
 `docker-compose up --build`
 
