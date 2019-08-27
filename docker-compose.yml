@@ -1,0 +1,37 @@
+version: "3.2"
+services:
+  db:
+    image: postgres:10
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./docker/volumes/postgres:/var/lib/postgresql/data
+  backend:
+    build: ./survey-api
+    volumes:
+      - ./survey-api:/app/survey-api
+      - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    entrypoint: /entrypoint.sh
+    command: "python3 manage.py runserver 0.0.0.0:8000"
+  frontend:
+    build: ./survey-react
+    volumes:
+      - ./survey-react:/app
+      # One-way volume to use node_modules from inside image
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    command: yarn start
